@@ -1,0 +1,21 @@
+<div class="display-flex-container">
+    <div [ngStyle]="{ background: contador < 2 ? '#f00' : '#0f0' }">O contador é: {{ contador }}</div>
+
+    <br />
+
+    <div [ngClass]="{ custom: contador > 2 }">O contador é: {{ contador }}</div>
+    <br />
+
+    <div *ngIf="contador > 2; else menor">contador passou de 2</div>
+    <ng-template #menor>
+    <div>Menor que 2</div>
+    </ng-template>
+    <br />
+
+    <div [ngSwitch]="contador">
+    <div *ngSwitchCase="0">igual a 0</div>
+    <div *ngSwitchCase="1">igual a 1</div>
+    <div *ngSwitchCase="2">igual a 2</div>
+    <div *ngSwitchDefault>default</div>
+    </div>
+</div>
