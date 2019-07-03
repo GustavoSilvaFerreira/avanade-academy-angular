@@ -1,0 +1,9 @@
+<div class="container">
+    
+    <h2>Todos</h2>
+
+    <div *ngFor="let todo of todos" class="card" style="width: 18rem;">
+        <app-todo-item [data]="todo"></app-todo-item>
+    </div>
+
+</div>

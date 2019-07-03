@@ -1,25 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { isGeneratedFile } from '@angular/compiler/src/aot/util';
+import { TodoService } from './todo.service';
+import { map, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
-  title = 'Gustavo';
-  
-  items = ['1', '2', '3', '4', '5'];
+
+  contador = 0;
+
+  constructor(public todoService: TodoService) {}
 
   ngOnInit() {
-    setTimeout(() => {
-      this.title += " Ferreira";
-    }, 2000);
+    this.todoService.contador
+    .pipe(
+      map(value => value * 2), 
+      debounceTime(2000)
+    )
+    .subscribe(value => {
+      this.contador = value;
+    });
   }
-
-  novoItem() {
-    const text = prompt('Digite um nome');
-
-    this.items.push(text);
-  }
+  
 }

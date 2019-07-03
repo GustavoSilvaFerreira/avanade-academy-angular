@@ -1,19 +1,16 @@
-<main class="diplay-flex-container">
-  <h1>Hello world</h1>
+<app-contador></app-contador>
 
-  <i *ngIf="title === 'Gustavo Ferreira'">{{ title }}</i>
-  <br />
+<h1>{{ contador }}</h1>
 
-  <app-contador></app-contador>
+<app-contador-botoes></app-contador-botoes>
 
-  <br />
-
-  <button class="btn btn-primary" (click)="novoItem()">Novo número</button>
-  <br />
-
-  <ul>
-    <li *ngFor="let item of items">
-      <app-todo-item [data]="item"></app-todo-item>
+<br />
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
     </li>
-  </ul>
-</main>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/todos">Todos</a>
+    </li>
+</ul>
+<router-outlet></router-outlet>
