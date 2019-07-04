@@ -1,0 +1,59 @@
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input type="email" #campoEmail="ngModel" name="email" [(ngModel)]="email" minlength="4" class="form-control" placeholder="email" aria-label="Usuário" aria-describedby="basic-addon1" email required>
+</div>
+
+<div *ngIf="campoEmail.errors && campoEmail.touched" class="alert alert-danger" role="alert">
+    <div *ngIf="campoEmail?.errors.minlength">
+        E-mail inválido!!! Deve ter mais que 4 caracteres.
+    </div>
+    <div *ngIf="campoEmail?.errors.required">
+        Campo obrigatório!!!
+    </div>
+    <div *ngIf="campoEmail?.invalid">
+        E-mail inválido!!!
+    </div>
+</div>
+
+{{ email }}
+
+<form #form="ngForm">
+    {{ todo | json }}
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+        </div>
+        <input type="number" class="form-control" name="id" aria-label="id" aria-describedby="id" [(ngModel)]="todo.id" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+        </div>
+        <input type="text" class="form-control" name="title" aria-label="title" aria-describedby="title" [(ngModel)]="todo.title" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+        </div>
+        <input type="text" class="form-control" name="description" aria-label="description" aria-describedby="description" [(ngModel)]="todo.description" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+        </div>
+        <input type="date" class="form-control" name="date" aria-label="date" aria-describedby="date" [(ngModel)]="todo.date" required>
+    </div>
+
+    <input type="checkbox" id="finished" name="finished" [(ngModel)]="todo.finished" />
+    <label for="finished">True</label>
+
+    <br />
+
+    <button (click)="enviar()" class="btn btn-success" [disabled]="form.invalid">Enviar</button>
+</form>

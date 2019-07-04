@@ -1,0 +1,12 @@
+<input type="text" [(ngModel)]="cepTexto" />
+
+{{ cepTexto }}
+
+<button (click)="buscarCep()">Buscar</button>
+
+<div class="card-body">
+    <h5 class="card-title">{{ cep.logradouro }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ cep.bairro }}</h6>
+    <p class="card-text">{{ cep.localidade }}</p>
+    <a href="#" class="card-link">{{ cep.uf }}</a>
+</div>
