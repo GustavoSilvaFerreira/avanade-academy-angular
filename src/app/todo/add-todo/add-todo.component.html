@@ -21,13 +21,12 @@
 {{ email }}
 
 <form #form="ngForm">
-    {{ todo | json }}
-    <div class="input-group mb-3">
+    <!-- <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
         </div>
         <input type="number" class="form-control" name="id" aria-label="id" aria-describedby="id" [(ngModel)]="todo.id" required>
-    </div>
+    </div> -->
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -55,5 +54,6 @@
 
     <br />
 
-    <button (click)="enviar()" class="btn btn-success" [disabled]="form.invalid">Enviar</button>
+    <button *ngIf="!isEdit" (click)="enviar()" class="btn btn-success" [disabled]="form.invalid">Enviar</button> 
+    <button *ngIf="isEdit" (click)="sendEdit()" class="btn btn-success" [disabled]="form.invalid">Enviar</button> 
 </form>

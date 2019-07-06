@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from 'src/typings/todo';
 
+const API_TODOS = 'http://localhost:3000';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +17,24 @@ export class TodoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getTodos(): Observable<Todo[]> {
-    return this.httpClient.get<Todo[]>('http://localhost:3000/todos');
+  getTodos(userId): Observable<Todo[]> {
+    return this.httpClient.get<Todo[]>(`${API_TODOS}/users/${userId}/todos`);
   }
 
   adicionarTodo(todo: Todo) {
-    return this.httpClient.post('http://localhost:3000/todos', todo);
+    return this.httpClient.post(`${API_TODOS}/todos`, todo);
+  }
+
+  getTodo(id) {
+    return this.httpClient.get(`${API_TODOS}/todos/${id}`);
+  }
+
+  updateTodo(id, todo) {
+    return this.httpClient.put(`${API_TODOS}/todos/${id}`, todo);
+  }
+
+  deleteTodo(id) {
+    return this.httpClient.delete(`${API_TODOS}/todos/${id}`);
   }
 
   aumentar() {

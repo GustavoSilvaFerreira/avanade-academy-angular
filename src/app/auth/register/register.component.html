@@ -1,0 +1,17 @@
+<div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">E-mail</span>
+        </div>
+        <input [(ngModel)]="dadosCreate.email" type="email" class="form-control" name="email" aria-label="email" aria-describedby="email" required>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Senha</span>
+        </div>
+        <input [(ngModel)]="dadosCreate.senha" type="password" class="form-control" name="senha" aria-label="senha" aria-describedby="senha" required>
+    </div>
+
+    <button (click)="criar()">Create account</button>
+</div>

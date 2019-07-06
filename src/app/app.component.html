@@ -6,7 +6,8 @@
     <app-contador-botoes></app-contador-botoes>
 
     <br />
-    <ul class="nav navbar font-weight-bold bg-dark mb-2">
+    
+    <ul class="nav navbar font-weight-bold bg-dark mb-2" *ngIf="user$ | async; else deslogado">
         <li class="nav-item">
             <a class="nav-link text-white" routerLink="/">Home</a>
         </li>
@@ -17,8 +18,28 @@
             <a class="nav-link text-white" routerLink="/cep">Cep</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" routerLink="/add-todo">Add todo</a>
+            <a class="nav-link text-white" routerLink="/todos/add-todo">Add todo</a>
+        </li>
+        <li class="nav-item">
+            <span class="text-white mr-2">Olá, {{ (user$ | async).email }}</span>
+            <button class="btn btn-danger" (click)="logout()">Sair</button>
         </li>
     </ul>
+
+    
+    <ng-template #deslogado>
+        <ul class="nav navbar font-weight-bold bg-dark mb-2">
+            <li class="nav-item">
+                <a class="nav-link text-white" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" routerLink="/auth/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" routerLink="/auth/register">Registrar</a>
+            </li>
+        </ul>
+    </ng-template>
+    
     <router-outlet></router-outlet>
 </div>

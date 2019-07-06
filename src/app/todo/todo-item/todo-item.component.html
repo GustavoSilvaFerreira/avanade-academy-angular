@@ -3,4 +3,9 @@
     <h6 class="card-subtitle mb-2 text-muted">{{ data.date | date: 'dd/MM/yyyy' }}</h6>
     <p class="card-text">{{ data.description }}</p>
     <a href="#" class="card-link">{{ data.finished | bool }}</a>
+
+    <div>
+        <button class="btn btn-warning mr-2" (click)="editar()">Editar</button>
+        <button class="btn btn-danger" (click)="excluir()">Excluir</button>
+    </div>
 </div>
